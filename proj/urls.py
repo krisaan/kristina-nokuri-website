@@ -1,5 +1,5 @@
 """
-URL configuration for testproj project.
+URL configuration for proj project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -20,7 +20,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # Now to access the different views we can use http://localhost/app/<path_in_view>
-    # For example, http://127.0.0.1/app/function or http://127.0.0.1/app/class
-    path("", include("testapp.urls")),
+    path("", include("app.urls")),
 ]

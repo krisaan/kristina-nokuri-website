@@ -2,5 +2,6 @@
 .env*
 db.sqlite3
 blog_photos
-testapp/migrations/__pycache__
-testproj/__pycache__
+app/migrations/__pycache__
+app/__pycache__
+proj/__pycache__
