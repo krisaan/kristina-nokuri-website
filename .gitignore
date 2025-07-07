@@ -1,0 +1,6 @@
+.env
+.env*
+db.sqlite3
+blog_photos
+testapp/migrations/__pycache__
+testproj/__pycache__
