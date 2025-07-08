@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import BlogPostForm
 from .models import BlogPost
 from .forms import ContactForm
-
+import json
+from django.views.decorators.csrf import csrf_exempt
 import os
 from dotenv import load_dotenv
 
@@ -28,9 +29,40 @@ def home(request):
     if request.method == "GET":
         return render(request, "index.html")
 
+@csrf_exempt
+def github_webhook(request):
+    token = request.GET.get("token")
+
+    if token != settings.GITHUB_WEBHOOK_TOKEN:
+        return HttpResponse("Unauthorized", status=401)
+
+    if request.method != "POST":
+        return HttpResponse("Method Not Allowed", status=405)
+
+    event = request.headers.get("X-GitHub-Event", "ping")
+
+    try:
+        payload = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({"error": "Invalid JSON"}, status=400)
+
+    if event == "ping":
+        return JsonResponse({"msg": "pong"})
+
+    if event == "push":
+        repo = payload.get("repository", {}).get("full_name")
+        commits = payload.get("commits", [])
+
+        # Add logic here to sync or update your database if needed
+        print(f"Push event from: {repo}, {len(commits)} commits")
+
+        return JsonResponse({"status": "success", "repo": repo})
+
+    return JsonResponse({"msg": "Unhandled event: " + event}, status=200)
 
 def projects(request):
     if request.method == "GET":
+
         return render(request, "projects.html")
 
 

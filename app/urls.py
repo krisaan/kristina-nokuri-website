@@ -14,4 +14,5 @@ urlpatterns = [
     path("blog", views.blog),
     path("contact", views.contact),
     path("projects", views.projects),
+    path("projects/github-webhook", views.github_webhook)
 ]

@@ -5,17 +5,18 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>{% block title %}My Site{% endblock %}</title>
+		<link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 	</head>
 	<body>
 		<header>
-			<h1>Welcome to my website, I'm Kristina</h1>
-            <h2>a computer scienist and web developer</h2>
+			<h1 class="menu-title">Welcome to my website, I'm Kristina</h1>
+            <h2 class="menu-subtitle">a computer scienist and software engineer.</h2>
 			<nav>
-                <a href="">Home</a>
-                <a href="projects">Projects</a>
-                <a onclick="window.location.href='/blog'">Blog</a>
-                <a href="contact">Contact</a>
+                <a href="/" class="menu">Home</a>
+                <a href="projects" class="menu">Projects</a>
+                <a onclick="window.location.href='/blog'" class="menu">Blog</a>
+                <a href="contact" class="menu">Contact</a>
 			</nav>
 		</header>
 
