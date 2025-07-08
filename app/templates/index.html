@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Kristina's Website!</title>
-	</head>
-	<body>
-		<dev class="menu">
-			<a href="">Home</a>
-			<a href="projects">Projects</a>
-			<a href="blog">Blog</a>
-			<a href="contact">Contact</a>
-		</dev>
-	</body>
-</html>
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %} 
+{% block content%}
+
+
+<body>
+	<p>Here you can find my projects, and contact information. </p>
+	<p>Below are some quick links and my email. You can also send an email through the contacts page.</p>
+	<div id="my-links">
+		<a href="https://github.com/krisaan">Github</a>
+		<a = href="https://www.linkedin.com/in/kristina-nokuri/">Linkedin</a>
+	</div>
+</body>
+
+{% endblock %}

@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Contact me</title>
-	</head>
-	<body>
-        <h1>Contact me!</h1>
-        <form method="POST" enctype="multipart/form-data">
-			<!--security measure -->
-			{% csrf_token %}
-			<!--displays form as p tag-->
-			{{ form.as_p }}
-			<button type="submit">Submit contact inquiry</button>
-    </body>
-</html>
+{% extends "base.html" %} 
+{% block title %}Contact{% endblock %} 
+{% block content %}
+
+<h1>Contact me!</h1>
+<form method="POST" enctype="multipart/form-data">
+	<!--security measure -->
+	{% csrf_token %}
+	<!--displays form as p tag-->
+	{{ form.as_p }}
+	<button type="submit">Submit contact inquiry</button>
+</form>
+{% endblock %}

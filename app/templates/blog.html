@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>View blog</title>
-	</head>
-	<body>
-		<h1>Blog</h1>
-	</body>
-</html>
+{% extends "base.html" %} {% block title %}Blog{% endblock %} {% block content%}
+<h2>Blog Posts</h2>
+{% for post in blog_posts %}
+<h3>{{ post.title }}</h3>
+<p>{{ post.subtitle }}</p>
+<img
+	src="{{ post.photo.url }}"
+	width="300"
+	height="200"
+	alt="{{ post.photo_alt }}"
+/>
+
+{% empty %}
+<p>No posts yet.</p>
+{% endfor %} {% endblock %}
